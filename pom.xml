@@ -6,7 +6,11 @@
 
   <groupId>com.xtzhou.java.advance</groupId>
   <artifactId>rxjava</artifactId>
+  <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
+  <modules>
+    <module>netty</module>
+  </modules>
 
   <name>rxjava</name>
   <!-- FIXME change it to the project's website -->

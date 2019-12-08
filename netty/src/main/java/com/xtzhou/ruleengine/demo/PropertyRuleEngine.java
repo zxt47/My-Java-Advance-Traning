@@ -8,8 +8,7 @@ public class PropertyRuleEngine {
     @Value("#{properties.isOverCabin and properties.isCodeShare}")
     Boolean answer;
 
-    public boolean testRule()
-    {
+    public boolean testRule() {
         return answer;
     }
 }

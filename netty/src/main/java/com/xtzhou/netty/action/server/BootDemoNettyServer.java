@@ -1,14 +1,16 @@
 package com.xtzhou.netty.action.server;
 
 
-import com.xtzhou.netty.action.adapter.BootNettyChannelInboundHandlerAdapter;
+import com.xtzhou.netty.action.codec.OrderFrameDecoder;
+import com.xtzhou.netty.action.codec.OrderFrameEncoder;
+import com.xtzhou.netty.action.codec.OrderProtocolDecoder;
+import com.xtzhou.netty.action.codec.OrderProtocolEncoder;
+import com.xtzhou.netty.action.server.handler.OrderServerProcessHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BootDemoNettyServer {
 
+    /**
+     *
+     * @param port
+     * @throws Exception
+     */
     public void bind(int port) throws Exception
     {
         EventLoopGroup bossGroup=new NioEventLoopGroup();
@@ -31,9 +38,14 @@ public class BootDemoNettyServer {
             @Override
             protected void initChannel(NioSocketChannel ch) throws Exception {
                 ChannelPipeline pipeline = ch.pipeline();
-                pipeline.addLast(new LoggingHandler(LogLevel.INFO)).addLast("encoder",new StringEncoder())
-                        .addLast("decoder",new StringDecoder());
-                pipeline.addLast(new BootNettyChannelInboundHandlerAdapter());
+                pipeline.addLast(new OrderFrameDecoder());
+                pipeline.addLast(new OrderFrameEncoder());
+                pipeline.addLast(new OrderProtocolEncoder());
+                pipeline.addLast(new OrderProtocolDecoder());
+
+                pipeline.addLast(new LoggingHandler(LogLevel.INFO));
+
+                pipeline.addLast(new OrderServerProcessHandler());
             }
         });
         ChannelFuture f=serverBootstrap.bind(port).sync();

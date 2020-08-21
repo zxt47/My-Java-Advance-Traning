@@ -12,10 +12,9 @@ public class JedisUtil {
     @Autowired
     private JedisPool jedisPool;
 
-    public void testJedisFunction()
-    {
-        Jedis jedis=jedisPool.getResource();
+    public void testJedisFunction() {
+        Jedis jedis = jedisPool.getResource();
         log.info(jedis.toString());
-        jedis.append("Test","123");
+        jedis.append("Test", "123");
     }
 }

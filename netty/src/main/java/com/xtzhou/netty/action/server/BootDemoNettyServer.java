@@ -22,18 +22,16 @@ import org.springframework.stereotype.Component;
 public class BootDemoNettyServer {
 
     /**
-     *
      * @param port
      * @throws Exception
      */
-    public void bind(int port) throws Exception
-    {
-        EventLoopGroup bossGroup=new NioEventLoopGroup();
-        EventLoopGroup workerGroup=new NioEventLoopGroup(5);
-        ServerBootstrap serverBootstrap=new ServerBootstrap().group(bossGroup,workerGroup)
+    public void bind(int port) throws Exception {
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup(5);
+        ServerBootstrap serverBootstrap = new ServerBootstrap().group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class).handler(new LoggingHandler(LogLevel.INFO));
-        serverBootstrap.option(ChannelOption.RCVBUF_ALLOCATOR,new AdaptiveRecvByteBufAllocator())
-                .childOption(ChannelOption.RCVBUF_ALLOCATOR,new AdaptiveRecvByteBufAllocator());
+        serverBootstrap.option(ChannelOption.RCVBUF_ALLOCATOR, new AdaptiveRecvByteBufAllocator())
+                .childOption(ChannelOption.RCVBUF_ALLOCATOR, new AdaptiveRecvByteBufAllocator());
         serverBootstrap.childHandler(new ChannelInitializer<NioSocketChannel>() {
             @Override
             protected void initChannel(NioSocketChannel ch) throws Exception {
@@ -48,7 +46,7 @@ public class BootDemoNettyServer {
                 pipeline.addLast(new OrderServerProcessHandler());
             }
         });
-        ChannelFuture f=serverBootstrap.bind(port).sync();
+        ChannelFuture f = serverBootstrap.bind(port).sync();
         f.channel().closeFuture().sync();
     }
 

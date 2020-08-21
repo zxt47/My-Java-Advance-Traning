@@ -44,6 +44,30 @@
             <artifactId>lettuce-core</artifactId>
         </dependency>
 
+        <!-- 另外一种技术选型，Redisson,相比于Redis,Redisson支持更多的数据结构-->
+        <!-- 还支持中文wiki-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <!--Xmemcached,连接memcached的client -->
+        <dependency>
+            <groupId>com.googlecode.xmemcached</groupId>
+            <artifactId>xmemcached</artifactId>
+            <version>2.4.6</version>
+        </dependency>
+
+        <!--Ehcache,JVM可以使用的缓存  -->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+
+        <!-- Spring Cache -->
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

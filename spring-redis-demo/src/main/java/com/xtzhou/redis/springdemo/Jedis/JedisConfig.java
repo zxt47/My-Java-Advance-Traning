@@ -22,14 +22,12 @@ public class JedisConfig {
      */
     @Bean
     @ConfigurationProperties("redis")
-    public JedisPoolConfig jedisPoolConfig()
-    {
+    public JedisPoolConfig jedisPoolConfig() {
         return new JedisPoolConfig();
     }
 
     @Bean(destroyMethod = "close")
-    public JedisPool jedisPool(@Value("${redis.host}")String host)
-    {
-        return new JedisPool(jedisPoolConfig,host,6379);
+    public JedisPool jedisPool(@Value("${redis.host}") String host) {
+        return new JedisPool(jedisPoolConfig, host, 6379);
     }
 }

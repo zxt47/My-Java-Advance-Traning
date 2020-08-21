@@ -23,15 +23,13 @@ public class NettyWithSpringBoot {
     }
 
     @Bean
-    BootDemoNettyServer demoNettyServer()
-    {
-        BootDemoNettyServer demoNettyServer=new BootDemoNettyServer();
+    BootDemoNettyServer demoNettyServer() {
+        BootDemoNettyServer demoNettyServer = new BootDemoNettyServer();
         try {
-              demoNettyServer.bind(6379);
+            demoNettyServer.bind(6379);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             return demoNettyServer;
         }
     }

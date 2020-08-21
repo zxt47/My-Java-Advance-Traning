@@ -14,11 +14,11 @@ public final class JsonUtil {
         //no instance
     }
 
-    public static <T> T fromJson(String jsonStr, Class<T> clazz){
+    public static <T> T fromJson(String jsonStr, Class<T> clazz) {
         try {
             return objectMapper.readValue(jsonStr, clazz);
         } catch (JsonProcessingException e) {
-            log.error("",e);
+            log.error("", e);
             return null;
         }
     }
@@ -27,7 +27,7 @@ public final class JsonUtil {
         try {
             return objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            log.error("",e);
+            log.error("", e);
             return "";
         }
     }

@@ -17,6 +17,7 @@
         <module>netty</module>
         <module>spring-redis-demo</module>
         <module>spring-jpa-demo</module>
+        <module>spring-async-demo</module>
     </modules>
 
     <name>rxjava</name>

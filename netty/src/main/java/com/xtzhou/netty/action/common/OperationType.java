@@ -1,7 +1,6 @@
 package com.xtzhou.netty.action.common;
 
 
-
 import com.xtzhou.netty.action.common.auth.AuthOperation;
 import com.xtzhou.netty.action.common.auth.AuthOperationResult;
 import com.xtzhou.netty.action.common.keepalive.KeepaliveOperation;
@@ -27,7 +26,7 @@ public enum OperationType {
         this.operationResultClazz = responseClass;
     }
 
-    public int getOpCode(){
+    public int getOpCode() {
         return opCode;
     }
 
@@ -39,18 +38,18 @@ public enum OperationType {
         return operationResultClazz;
     }
 
-    public static OperationType fromOpCode(int type){
+    public static OperationType fromOpCode(int type) {
         return getOperationType(requestType -> requestType.opCode == type);
     }
 
-    public static OperationType fromOperation(Operation operation){
+    public static OperationType fromOperation(Operation operation) {
         return getOperationType(requestType -> requestType.operationClazz == operation.getClass());
     }
 
-    private static OperationType getOperationType(Predicate<OperationType> predicate){
+    private static OperationType getOperationType(Predicate<OperationType> predicate) {
         OperationType[] values = values();
         for (OperationType operationType : values) {
-            if(predicate.test(operationType)){
+            if (predicate.test(operationType)) {
                 return operationType;
             }
         }

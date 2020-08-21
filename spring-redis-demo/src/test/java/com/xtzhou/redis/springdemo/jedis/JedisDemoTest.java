@@ -14,16 +14,15 @@ import redis.clients.jedis.Jedis;
 public class JedisDemoTest {
     @Autowired
     JedisUtil jedisUtil;
+
     @Test
-    public void test_JedisDemo()
-    {
+    public void test_JedisDemo() {
         jedisUtil.testJedisFunction();
     }
 
     @Test
-    public void test_SingleJedis()
-    {
-        Jedis jedis=new Jedis("192.168.99.100:6379");
+    public void test_SingleJedis() {
+        Jedis jedis = new Jedis("192.168.99.100:6379");
         jedis.set("foo", "bar");
         String value = jedis.get("foo");
     }

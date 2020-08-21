@@ -12,7 +12,7 @@ public abstract class Message<T extends MessageBody> {
     private MessageHeader messageHeader;
     private T messageBody;
 
-    public T getMessageBody(){
+    public T getMessageBody() {
         return messageBody;
     }
 

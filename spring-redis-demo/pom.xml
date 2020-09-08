@@ -10,15 +10,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.xtzhou.java.advance</groupId>
     <artifactId>spring-redis-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
 
         <!--原生支持的Spring Data Redis -->
         <dependency>

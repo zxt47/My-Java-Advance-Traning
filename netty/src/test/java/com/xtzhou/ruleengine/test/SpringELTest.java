@@ -7,6 +7,7 @@ import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
+import sun.net.www.protocol.http.HttpURLConnection;
 
 public class SpringELTest {
     /**
@@ -27,5 +28,14 @@ public class SpringELTest {
         expression = expressionParser.parseExpression(source);
         answer = expression.getValue(standardEvaluationContext, Boolean.class);
         System.out.println(answer);
+    }
+
+    /**
+     * 排查jar包冲突和ClassNotFound异常
+     */
+    @Test
+    public void testFindTheConflictClassDef() {
+        String path = HttpURLConnection.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+        System.out.println(path);
     }
 }

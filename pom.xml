@@ -19,6 +19,7 @@
         <module>spring-jpa-demo</module>
         <module>spring-async-demo</module>
         <module>spring-scheduled-demo</module>
+        <module>spring-aop-demo</module>
     </modules>
 
     <name>rxjava</name>

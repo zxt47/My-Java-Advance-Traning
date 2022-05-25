@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.2.1.RELEASE</version>
+            <version>5.2.22.RELEASE</version>
         </dependency>
         <!-- 引入Spring上下文，就可以使用Spring EL表达式了 -->
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
